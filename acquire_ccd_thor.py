@@ -6,7 +6,7 @@ import cv2
 from datetime import datetime
 
 # --- CONFIGURATION ---
-FORCE_SIMULATION = True  # Set False if you have a real uEye camera connected
+FORCE_SIMULATION = False  # Set False if you have a real uEye camera connected
 
 # --- CAMERA SETUP ---
 try:
