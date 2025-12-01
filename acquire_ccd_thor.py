@@ -8,7 +8,7 @@ from tkinter import filedialog
 from datetime import datetime
 
 # --- CONFIGURATION ---
-FORCE_SIMULATION = True # Set to False if you have the real camera connected
+FORCE_SIMULATION = False # Set to False if you have the real camera connected
 
 # --- CAMERA SETUP ---
 try:
@@ -178,7 +178,7 @@ def main():
     
     # Slider Setup
     cv2.createTrackbar("Mode", win, 0, 2, nothing) # 0=Raw, 1=Gauss, 2=Notch
-    cv2.createTrackbar("Param1", win, 10, 50, nothing) # Radius/Kernel
+    cv2.createTrackbar("Param1", win, 10, 100, nothing) # Radius/Kernel
     cv2.createTrackbar("K_X", win, 100, 200, nothing) # Frequency X
     cv2.createTrackbar("K_Y", win, 100, 200, nothing) # Frequency Y
 
