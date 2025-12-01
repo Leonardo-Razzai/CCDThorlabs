@@ -112,4 +112,13 @@ This mode is designed to remove **periodic noise** (stripes/grids).
 
 **"I saved an image but can't find it."**
 
+## TODO
+1) avere linea rossa sottile nei piani di simmetria orizzontali e verticali
+2) poter mettere e togliere le linee rosse
+3) avere degli pseudo colori
+4) salvare solo la regione della camera invece che entrambe
+5) poter modificare l’esposizione
+6) poter selezionare più regioni nello spazio di Fourier da sopprimere
+7) poter zoomare o dezoomare le varie finestre
+
   * Check the console output. The script prints exactly where it saved the file. If you cancelled the dialog, it will say "Save cancelled."
