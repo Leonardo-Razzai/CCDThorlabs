@@ -263,21 +263,20 @@ def main():
                 if res: state.cursor_cam = res
 
         if event == cv2.EVENT_LBUTTONDOWN:
-            if x < QUAD_W and y < QUAD_H:
-                res = screen_to_orig_zoomed(x, y, state.cam_scale_info, CAM_W, CAM_H, state.zoom_cam)
-                if res: state.cursor_cam = res
-            elif x >= QUAD_W and y < QUAD_H:
-                res = screen_to_orig_zoomed(x - QUAD_W, y, state.fft_scale_info, CAM_W, CAM_H, state.zoom_fft)
-                if res: state.notches.append((res[0], res[1], state.notch_radius))
-
-        if event == cv2.EVENT_RBUTTONDOWN and x >= QUAD_W and y < QUAD_H:
-            state.notches = []
-
-    cv2.setMouseCallback(win_name, mouse_callback)
+            state.dragging = True; state.p1 = (x, y); state.p2 = (x, y)
+        elif event == cv2.EVENT_MOUSEMOVE and state.dragging:
+            state.p2 = (x, y)
+        elif event == cv2.EVENT_LBUTTONUP:
+            state.dragging = False; state.p2 = (x, y)
+            
+    cv2.setMouseCallback(win, mouse)
+    def nothing(x): pass
     
-    def on_radius_change(val): state.notch_radius = max(1, val)
-    cv2.createTrackbar("Radius", win_name, 10, 50, on_radius_change)
-    cv2.createTrackbar("Gain", win_name, 100, 300, lambda x: None)
+    # Slider Setup
+    cv2.createTrackbar("Mode", win, 0, 2, nothing) # 0=Raw, 1=Gauss, 2=Notch
+    cv2.createTrackbar("Param1", win, 10, 50, nothing) # Radius/Kernel
+    cv2.createTrackbar("K_X", win, 100, 200, nothing) # Frequency X
+    cv2.createTrackbar("K_Y", win, 100, 200, nothing) # Frequency Y
 
     try:
         while True:
