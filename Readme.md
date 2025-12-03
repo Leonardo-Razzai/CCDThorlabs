@@ -60,8 +60,10 @@ FORCE_SIMULATION = True
 Run the script:
 
 ```bash
-python camera_lab.py
+python acquire_ccd_thor.py
 ```
+
+### NB: if the signal acquired by the camera is to low, IDS will not be able to identify the camera. So, when starting the program, turn on the light!!
 
 ### A. The Control Panel (Sliders)
 
